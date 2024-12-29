@@ -7,7 +7,6 @@ DRF(Django Rest Framework)를 활용한 중고 거래 마켓 API 서버
 ## 📋 프로젝트 개요
 
 - **프로젝트 이름**: sparta_market_DRF
-- **개발 기간**: YYYY.MM.DD - YYYY.MM.DD
 - **개발 인원**: 1명
 - **개발 환경**: Python 3.11, Django 4.2, DRF 3.14
 
@@ -48,9 +47,6 @@ DRF(Django Rest Framework)를 활용한 중고 거래 마켓 API 서버
 - 상품 좋아요
 - 유저 팔로우
 - 태그 시스템
-
-## 🗄 ERD
-![ERD 이미지 링크]
 
 ## 📁 프로젝트 구조
 ```
@@ -161,6 +157,6 @@ python manage.py runserver
 이 프로젝트는 MIT 라이센스를 따릅니다.
 
 ## 👨‍💻 개발자 정보
-- 이름: [이름]
-- 이메일: [이메일]
-- GitHub: [GitHub 프로필 링크]
+- 이름: [김광림]
+- 이메일: []
+- GitHub: [[GitHub 프로필 링크](https://github.com/bgt30)]
