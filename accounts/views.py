@@ -83,7 +83,8 @@ class FollowView(generics.GenericAPIView):
     def post(self, request, username):
         user_to_follow = get_object_or_404(User, username=username)
         if request.user == user_to_follow:
-            return Response({"error": "자기 자신을 팔로우할 수 없습니다."}, status=400)
+            return Response({"error": "자기 자신을 팔로우할 수 없습니다."}, 
+                          status=status.HTTP_400_BAD_REQUEST)
         
         if request.user in user_to_follow.followers.all():
             user_to_follow.followers.remove(request.user)
