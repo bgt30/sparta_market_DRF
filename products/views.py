@@ -12,7 +12,7 @@ class CustomPageNumberPagination(PageNumberPagination):
     page_size_query_param = 'page_size'
 
 class ProductList(generics.ListCreateAPIView):
-    queryset = Product.objects.all()
+    queryset = Product.objects.select_related('author').prefetch_related('tags')
     serializer_class = ProductSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
