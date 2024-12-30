@@ -6,6 +6,13 @@ from .models import User
 from django.shortcuts import get_object_or_404
 from rest_framework import status
 
+def standard_response(data=None, message=None, status=200):
+    return Response({
+        "status": "success" if status < 400 else "error",
+        "message": message,
+        "data": data
+    }, status=status)
+
 class SignUpView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
