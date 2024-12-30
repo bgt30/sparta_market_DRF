@@ -1,10 +1,21 @@
 from django.db import models
 from django.conf import settings
+from django.core.exceptions import ValidationError
 
 class Product(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
-    image = models.ImageField(upload_to='products/')
+    def validate_image(fieldfile_obj):
+        filesize = fieldfile_obj.file.size
+        megabyte_limit = 5.0
+        if filesize > megabyte_limit*1024*1024:
+            raise ValidationError("최대 파일 크기는 %sMB 입니다" % str(megabyte_limit))
+
+    image = models.ImageField(
+        upload_to='products/',
+        validators=[validate_image],
+        help_text='최대 5MB'
+    )
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

@@ -4,6 +4,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from .serializers import UserSerializer
 from .models import User
 from django.shortcuts import get_object_or_404
+from rest_framework import status
 
 class SignUpView(generics.CreateAPIView):
     queryset = User.objects.all()
@@ -58,6 +59,13 @@ class PasswordChangeView(generics.UpdateAPIView):
 
     def get_object(self):
         return self.request.user
+
+    def update(self, request, *args, **kwargs):
+        user = request.user
+        if not user.check_password(request.data.get('old_password')):
+            return Response({"error": "현재 비밀번호가 일치하지 않습니다."}, 
+                          status=status.HTTP_400_BAD_REQUEST)
+        # 비밀번호 복잡성 검증 추가 필요
 
 class AccountDeleteView(generics.DestroyAPIView):
     permission_classes = (permissions.IsAuthenticated,)
