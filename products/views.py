@@ -4,6 +4,12 @@ from .models import Product
 from .serializers import ProductSerializer
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
+from rest_framework.pagination import PageNumberPagination
+
+class CustomPageNumberPagination(PageNumberPagination):
+    page_size = 10
+    max_page_size = 100
+    page_size_query_param = 'page_size'
 
 class ProductList(generics.ListCreateAPIView):
     queryset = Product.objects.all()
