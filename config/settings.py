@@ -1,5 +1,7 @@
 INSTALLED_APPS += [
     'django_filters',
+    'accounts',
+    'products',
 ]
 
 REST_FRAMEWORK = {
