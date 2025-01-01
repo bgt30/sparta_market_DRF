@@ -101,36 +101,6 @@ sparta_market_DRF/
 | DELETE | /api/products/<id>/ | 상품 삭제 | O |
 | POST | /api/products/<id>/like/ | 상품 좋아요 | O |
 
-## 💻 설치 및 실행 방법
-
-1. 저장소 클론
-```bash
-git clone https://github.com/username/sparta_market_DRF.git
-cd sparta_market_DRF
-```
-
-2. 가상환경 생성 및 활성화
-```bash
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-```
-
-3. 필요한 패키지 설치
-```bash
-pip install -r requirements.txt
-```
-
-4. 데이터베이스 마이그레이션
-```bash
-python manage.py makemigrations
-python manage.py migrate
-```
-
-5. 서버 실행
-```bash
-python manage.py runserver
-```
-
 ## 📝 요구사항 체크리스트
 
 ### 필수 구현
